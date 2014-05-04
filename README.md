@@ -7,7 +7,7 @@ The goal of this project is to generate documentation for the subset of TEI elem
 
 ###Technology
 
-The code consists of an XQuery module with a sample FLWOR to invoke the function and persist the result to the filesystem. The code has been tested on [eXist](http://exist-db.org/exist/apps/homepage/index.html). The formatting of the ouput comes from a slightly modified version of the [Bootstrap Basic Template](http://getbootstrap.com/getting-started/).
+The code consists of an XQuery module along with the [tei_all.xsd](http://www.tei-c.org/release/xml/tei/custom/schema/xsd/tei_all.xsd). The code has been tested on [eXist](http://exist-db.org/exist/apps/homepage/index.html). The formatting of the ouput comes from a slightly modified version of the [Bootstrap Basic Template](http://getbootstrap.com/getting-started/).
 
 ###Installation
 
