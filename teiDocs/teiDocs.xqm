@@ -1,6 +1,6 @@
 xquery version "3.0";
 
-module namespace teiDoc = "http://nullable.net/teiDoc";
+module namespace teiDoc = "http://nullable.net/teiDocs";
 
 declare namespace functx = "http://www.functx.com";
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
@@ -48,7 +48,16 @@ declare function teiDoc:generate-docs($doc as xs:string) as element(html) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>TEI Element Subset</title>
         <!-- Bootstrap -->
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" />
+        <style> <![CDATA[
+            /* See http://stackoverflow.com/a/18783266 */
+            .row:nth-of-type(even) > .teiDocs {
+              background: #F0F0F0  !important;
+            }
+            .teiDocs {
+                min-height:3em;
+            } ]]>
+       </style>
     </head>
     <body>
         <div class="container"></div>
