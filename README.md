@@ -9,6 +9,20 @@ The goal of this project is to generate documentation for the subset of TEI elem
 
 The code consists of an XQuery module with a sample FLWOR to invoke the function and persist the result to the filesystem. The code has been tested on [eXist](http://exist-db.org/exist/apps/homepage/index.html). The formatting of the ouput comes from a slightly modified version of the [Bootstrap Basic Template](http://getbootstrap.com/getting-started/).
 
-###Release notes
+###Installation
 
-This remains a work in progress with several rough edges (including hardcoded URIs). So you probably don't want to use it yet.
+Create a collection "/db/apps/teiDocs" at eXist and add "teiDocs.xqm" and "tei_all.xsd". You can invoke the function from eXide as follows
+
+```xquery
+xquery version "3.0";
+
+import module namespace teiDoc = "http://nullable.net/teiDocs" at "/db/apps/teiDocs/teiDocs.xqm";
+
+declare option exist:serialize "method=html5 media-type=text/html";
+
+teiDoc:generate-docs("YOUR_TEI_FILE")
+```
+
+###Credits
+
+Created during [Hack Nashville 5](http://hacknashville.com/) on May 2-4, 2014.
