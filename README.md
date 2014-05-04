@@ -11,7 +11,7 @@ The code consists of an XQuery module with a sample FLWOR to invoke the function
 
 ###Installation
 
-Create a collection "/db/apps/teiDocs" at eXist and add "teiDocs.xqm" and "tei_all.xsd". You can invoke the function from eXide as follows
+Create a collection "/db/apps/teiDocs" at eXist and add "teiDocs.xqm" and "tei_all.xsd" to the collection. You can invoke the module from eXide with the following function:
 
 ```xquery
 xquery version "3.0";
