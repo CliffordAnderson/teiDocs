@@ -3,7 +3,7 @@ teiDocs
 
 ###Goal
 
-The goal of this project is to generate documentation for the subset of TEI elements in a particular TEI document.
+The goal of this project is to generate documentation for the subset of TEI elements used in any given TEI document.
 
 ###Technology
 
