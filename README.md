@@ -16,7 +16,7 @@ Create a collection "/db/apps/teiDocs" at eXist and add "teiDocs.xqm" and "tei_a
 ```xquery
 xquery version "3.0";
 
-import module namespace teiDoc = "http://nullable.net/teiDocs" at "/db/apps/teiDocs/teiDocs.xqm";
+import module namespace teiDocs = "http://nullable.net/teiDocs" at "/db/apps/teiDocs/teiDocs.xqm";
 
 declare option exist:serialize "method=html5 media-type=text/html";
 
