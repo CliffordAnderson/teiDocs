@@ -11,7 +11,7 @@ The code consists of an XQuery module along with the TEI XML Schema ( [tei_all.x
 
 ###Installation
 
-Create a collection "/db/apps/teiDocs" in eXist and add "teiDocs.xqm" and "tei_all.xsd" to the collection. You can invoke the module from eXide with the following function:
+Create a collection "/db/apps/teiDocs" in eXist and add [teiDocs.xqm](https://github.com/CliffordAnderson/teiDocs/blob/master/teiDocs/teiDocs.xqm) and [tei_all.xsd](https://github.com/CliffordAnderson/teiDocs/blob/master/teiDocs/tei_all.xsd) to the collection. You can invoke the module from eXide with the following function:
 
 ```xquery
 xquery version "3.0";
