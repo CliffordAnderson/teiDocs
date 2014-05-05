@@ -32,12 +32,12 @@ declare function teiDocs:get-docs-desc($element as xs:string) as xs:string? {
     return $doc//xs:element[@name = $element]/xs:annotation/xs:documentation/text()
 };
 
-declare function teiDocs:extract-paths($nodes as node()*) as element(a)* {
+declare function teiDocs:extract-paths($nodes as node()*) as element(div)* {
     let $elements := functx:distinct-element-paths($nodes)
     for $element in $elements
     let $docs-url := teiDocs:get-docs-url($element)
     let $docs-desc := teiDocs:get-docs-desc($element)
-    return <div class="col-md-12 teidocs"><div class="col-md-2"><a href="{$docs-url}">{$element}</a></div><div class="col-md-10">{$docs-desc}</div></div>
+    return <div class="col-md-12 teiDocs"><div class="col-md-2"><a href="{$docs-url}">{$element}</a></div><div class="col-md-10">{$docs-desc}</div></div>
 };
 
 declare function teiDocs:generate-docs($doc as xs:string) as element(html) {
