@@ -20,7 +20,7 @@ import module namespace teiDocs = "http://nullable.net/teiDocs" at "/db/apps/tei
 
 declare option exist:serialize "method=html5 media-type=text/html";
 
-teiDoc:generate-docs("PATH_TO_YOUR_TEI_FILE_IN_EXIST")
+teiDocs:generate-docs("PATH_TO_YOUR_TEI_FILE_IN_EXIST")
 ```
 
 ###Credits
