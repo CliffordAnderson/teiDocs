@@ -1,6 +1,6 @@
 xquery version "3.0";
 
-module namespace teiDoc = "http://nullable.net/teiDocs";
+module namespace teiDocs = "http://nullable.net/teiDocs";
 
 declare namespace functx = "http://www.functx.com";
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
@@ -9,12 +9,12 @@ declare namespace xs = "http://www.w3.org/2001/XMLSchema";
 (: See https://en.wikibooks.org/wiki/XQuery/All_Paths :)
 
 (: Adapted from Priscilla Walmsley's functx:path-to-node :)
-declare function teiDoc:path-to-node($nodes as node()*) as xs:string* {
+declare function teiDocs:path-to-node($nodes as node()*) as xs:string* {
     functx:sort($nodes/*/name(.))
 };
  
 declare function functx:distinct-element-paths($nodes as node()*) as xs:string* {
-    distinct-values(teiDoc:path-to-node($nodes/descendant-or-self::*))
+    distinct-values(teiDocs:path-to-node($nodes/descendant-or-self::*))
 };
  
 declare function functx:sort($seq as item()*) as item()* {
@@ -23,24 +23,24 @@ declare function functx:sort($seq as item()*) as item()* {
   return $item
 };
 
-declare function teiDoc:get-docs-url($element as xs:string) as xs:string? {
+declare function teiDocs:get-docs-url($element as xs:string) as xs:string? {
     "http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-" || $element || ".html"
 };
 
-declare function teiDoc:get-docs-desc($element as xs:string) as xs:string? {
-    let $doc := fn:doc("/db/snippets/tei_all.xsd")
+declare function teiDocs:get-docs-desc($element as xs:string) as xs:string? {
+    let $doc := fn:doc("/db/apps/teiDocs/tei_all.xsd")
     return $doc//xs:element[@name = $element]/xs:annotation/xs:documentation/text()
 };
 
-declare function teiDoc:extract-paths($nodes as node()*) as element(a)* {
+declare function teiDocs:extract-paths($nodes as node()*) as element(a)* {
     let $elements := functx:distinct-element-paths($nodes)
     for $element in $elements
-    let $docs-url := teiDoc:get-docs-url($element)
-    let $docs-desc := teiDoc:get-docs-desc($element)
+    let $docs-url := teiDocs:get-docs-url($element)
+    let $docs-desc := teiDocs:get-docs-desc($element)
     return <div class="col-md-12 teidocs"><div class="col-md-2"><a href="{$docs-url}">{$element}</a></div><div class="col-md-10">{$docs-desc}</div></div>
 };
 
-declare function teiDoc:generate-docs($doc as xs:string) as element(html) {
+declare function teiDocs:generate-docs($doc as xs:string) as element(html) {
     <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -62,7 +62,7 @@ declare function teiDoc:generate-docs($doc as xs:string) as element(html) {
     <body>
         <div class="container"></div>
         <h1>Documentation for TEI Element Subset</h1> 
-        {for $teiDoc in teiDoc:extract-paths(fn:doc($doc)) return <div class="row">{$teiDoc}<br /></div>} 
+        {for $teiDoc in teiDocs:extract-paths(fn:doc($doc)) return <div class="row">{$teiDoc}<br /></div>} 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
