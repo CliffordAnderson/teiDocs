@@ -49,14 +49,14 @@ declare function teiDocs:generate-docs($doc as xs:string) as element(html) {
         <title>TEI Element Subset</title>
         <!-- Bootstrap -->
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" />
-        <style> <![CDATA[
+        <style> 
             /* See http://stackoverflow.com/a/18783266 */
-            .row:nth-of-type(even) > .teiDocs {
+            .row:nth-of-type(even) &#123;
               background: #F0F0F0  !important;
-            }
-            .teiDocs {
+            &#125;
+            .teiDocs &#123;
                 min-height:3em;
-            } ]]>
+            &#125;
        </style>
     </head>
     <body>
