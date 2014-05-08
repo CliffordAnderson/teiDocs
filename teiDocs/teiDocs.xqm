@@ -50,13 +50,15 @@ declare function teiDocs:generate-docs($doc as xs:string) as element(html) {
         <!-- Bootstrap -->
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" />
         <style> 
+            <![CDATA[
             /* See http://stackoverflow.com/a/18783266 */
-            .row:nth-of-type(even) &#123;
+            .row:nth-of-type(even) {
               background: #F0F0F0  !important;
-            &#125;
-            .teiDocs &#123;
+            }
+            .teiDocs {
                 min-height:3em;
-            &#125;
+            }
+            ]]>
        </style>
     </head>
     <body>
