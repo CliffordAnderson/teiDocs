@@ -40,6 +40,17 @@ declare function teiDocs:extract-paths($nodes as node()*) as element(div)* {
     return <div class="col-md-12 teiDocs"><div class="col-md-2"><a href="{$docs-url}">{$element}</a></div><div class="col-md-10">{$docs-desc}</div></div>
 };
 
+
+declare function teiDocs:extract-attributes($nodes as node()*) as element(div)* {
+    let $attributes := distinct-values($nodes//@*/name(.))
+    for $attribute in $attributes
+    let $docs-url := teiDocs:get-docs-url($attribute)
+    let $docs-desc := teiDocs:get-docs-desc($attribute)
+    order by $attribute
+    return 
+    <div class="col-md-12 teiDocs"><div class="col-md-3"><a href="#">{$attribute}</a></div><div class="col-md-9">{$docs-desc}</div></div>
+};
+
 declare function teiDocs:generate-docs($doc as xs:string) as element(html) {
     <html lang="en">
     <head>
@@ -64,7 +75,16 @@ declare function teiDocs:generate-docs($doc as xs:string) as element(html) {
     <body>
         <div class="container"></div>
         <h1>Documentation for TEI Element Subset</h1> 
-        {for $teiDoc in teiDocs:extract-paths(fn:doc($doc)) return <div class="row">{$teiDoc}<br /></div>} 
+        <div>
+            <h4>Elements</h4>
+            <div>
+                {for $teiDoc in teiDocs:extract-paths(fn:doc($doc)) return <div class="row">{$teiDoc}<br /></div>}
+            </div>
+            <h4>Attributes</h4>
+            <div>
+                {for $teiDoc in teiDocs:extract-attributes(fn:doc($doc)) return <div class="row">{$teiDoc}<br /></div>}
+            </div>
+        </div>    
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
